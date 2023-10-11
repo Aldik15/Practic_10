@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Серик Алдияр</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .result {
+      margin-top: 20px;
+    }
+
+    .result p {
+      margin-bottom: 10px;
+    }
+
+    .calculator {
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    .calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .calculator button {
+      width: 100%;
+      padding: 10px;
+      background-color: green;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+    <script>
+        // Появление модального окна при загрузке страницы
+        window.onload = function() {
+          var modal = document.querySelector(".modal");
+          modal.style.display = "block";
+    
+          // Закрытие модального окна через 3 секунды
+          setTimeout(function() {
+            modal.style.display = "none";
+          }, 3000);
+        };
+      </script>
+    
+      <div class="modal">
+        <div class="modal-content">
+          <h2>Привет, мир!</h2>
+        </div>
+      </div>
+    
+
+
+  <script>
+    function calculateSalary() {
+      // Получаем зарплату от пользователя
+      var salary = parseFloat(prompt("Введите вашу зарплату:"));
+
+      // Добавляем премию
+      var bonus = salary * 0.15;
+      // Рассчитываем налоги
+      var taxes = (salary + bonus) * 0.1;
+      // Рассчитываем расходы
+      var expenses = 190;
+      // Рассчитываем оставшуюся сумму
+      var remaining = (salary + bonus - taxes - expenses) / 2;
+
+      // Выводим результат
+      alert("Зарплата: " + salary);
+      alert("Премия: " + bonus);
+      alert("Налоги: " + taxes);
+      alert("Расходы: " + expenses);
+      alert("Оставшаяся сумма: " + remaining);
+    }
+  </script>
+
+  <div class="calculator">
+    <input type="number" class="salary-input" placeholder="Введите зарплату">
+    <button onclick="calculateSalary()">Рассчитать зарплату</button>
+  </div>
+
+  <script>
+    // Попросим пользователя задумать число и выполнить определенные операции
+    var userNumber = prompt("Пожалуйста, задумайте число. Затем умножьте его на 2 и прибавьте 7. Введите полученный результат в этом окне:");
+
+    // Проведем обратные операции, чтобы найти задуманное число
+    var originalNumber = (userNumber - 7) / 2;
+
+    // Выведем задуманное число пользователю
+    alert("Вы задумали число: " + originalNumber);
+  </script>
+
+
+  <script>
+    function inputStudentNames() {
+      var names = [];
+
+      for (var i = 0; i < 3; i++) {
+        names[i] = prompt("Введите имя и фамилию студента " + (i + 1) + ":");
+      }
+
+      // Выводим имена и фамилии студентов
+      var studentsList = "";
+      for (var i = 0; i < names.length; i++) {
+        studentsList += names[i] + "\n";
+      }
+      alert("Список студентов:\n" + studentsList);
+    }
+  </script>
+
+  <button onclick="inputStudentNames()">Ввести имена студентов</button>
+
+  <script>
+    // Функция для выполнения арифметических операций
+    function calculate(a, b, operation) {
+      switch (operation) {
+        case "+":
+          return a + b;
+        case "-":
+          return a - b;
+        case "*":
+          return a * b;
+        case "/":
+          return a / b;
+        default:
+          return null;
+      }
+    }
+  </script>
+
+  <div class="calculator">
+    <input type="number" name="a" placeholder="Число 1">
+    <input type="number" name="b" placeholder="Число 2">
+    <button onclick="performCalculation('+')">Сложить</button>
+    <button onclick="performCalculation('-')">Вычесть</button>
+    <button onclick="performCalculation('*')">Умножить</button>
+    <button onclick="performCalculation('/')">Разделить</button>
+    <p name="result"></p>
+  </div>
+
+  <script>
+    function performCalculation(operation) {
+      var a = parseFloat(document.querySelector(".calculator input[name=a]").value);
+      var b = parseFloat(document.querySelector(".calculator input[name=b]").value);
+
+      var result = calculate(a, b, operation);
+
+      var resultElement = document.querySelector(".calculator p[name=result]");
+      resultElement.innerHTML = "Результат: " + result;
+    }
+  </script>
+
+</body>
+</html>
